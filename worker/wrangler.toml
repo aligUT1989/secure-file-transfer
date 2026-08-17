@@ -1,0 +1,10 @@
+name = "secure-file-transfer"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# Secrets (do NOT put real values here). Set them with:
+#   npx wrangler secret put R2_ACCOUNT_ID
+#   npx wrangler secret put R2_ACCESS_KEY_ID
+#   npx wrangler secret put R2_SECRET_ACCESS_KEY
+#   npx wrangler secret put R2_BUCKET
+#   npx wrangler secret put APP_PASSWORD

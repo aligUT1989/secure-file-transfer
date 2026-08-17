@@ -3,6 +3,13 @@
 Thumbs.db
 .vscode/
 
+# Worker build/deps
+worker/node_modules/
+worker/.wrangler/
+worker/.wrangler-dryrun/
+worker/dryrun.log
+worker/package-lock.json
+
 # Local secrets — if you ever move keys into a separate untracked file
 # (config.js is safe to commit: the anon key is public by design)
 *.local

@@ -8,18 +8,81 @@ Corporate firewalls block FTP, but this is just a normal `https://` website, so 
 - 🗑️ Delete files you no longer need
 - 🙈 Your files are **private to you** — no one else can see or reach them
 
-The app supports **two backends** (pick one in `config.js` via `MODE`):
+The app supports **three backends** (pick one in `config.js` via `MODE`):
 
-| Mode | Login with | Files stored in | Best for |
-|------|-----------|-----------------|----------|
-| **`github`** (default) | a GitHub access token | a **private GitHub repo** | quickest — no extra service |
-| `supabase` | email + password | Supabase Storage | many files / large files / real accounts |
+| Mode | Login with | Files stored in | Max file size | Best for |
+|------|-----------|-----------------|:---:|----------|
+| **`r2`** (default) | a password | **Cloudflare R2** (10 GB free) | ~5 GB | big files, best long-term |
+| `github` | a GitHub token | a private GitHub repo | 100 MB | quick, no extra service |
+| `supabase` | email + password | Supabase Storage | ~50 MB (free) | real email/password accounts |
 
 ---
 
-## ⚡ Quick start — GitHub mode (no Supabase needed)
+## 🚀 Quick start — Cloudflare R2 mode (for big files, e.g. 1.7 GB)
 
-This is how the app is set up right now.
+The website is static (GitHub Pages). It talks to a tiny **Cloudflare Worker** that holds
+your R2 keys and hands the browser short-lived upload/download links, so **big files upload
+straight to R2** with a real progress bar. Nothing large ever passes through GitHub.
+
+### 1. Make a free Cloudflare account + R2 bucket
+1. Sign up at <https://dash.cloudflare.com> (free).
+2. Left sidebar → **R2** → **Create bucket** (you may need to confirm billing info; R2 has a free tier, no charge). Name it e.g. `my-files`.
+
+### 2. Create an R2 API token (the keys the Worker uses)
+1. **R2 → Manage R2 API Tokens → Create API token**.
+2. Permission: **Object Read & Write**. Scope it to your bucket. **Create**.
+3. Copy the **Access Key ID**, **Secret Access Key**, and note your **Account ID**
+   (shown on the R2 overview page).
+
+### 3. Deploy the Worker
+In a terminal:
+```powershell
+cd "worker"
+npm install
+npx wrangler login          # opens browser, authorize
+npx wrangler deploy         # prints your Worker URL: https://secure-file-transfer.<sub>.workers.dev
+```
+Then set the secrets (each prompts you to paste the value — nothing is stored in the repo):
+```powershell
+npx wrangler secret put R2_ACCOUNT_ID
+npx wrangler secret put R2_ACCESS_KEY_ID
+npx wrangler secret put R2_SECRET_ACCESS_KEY
+npx wrangler secret put R2_BUCKET          # the bucket name, e.g. my-files
+npx wrangler secret put APP_PASSWORD       # the password you'll type on the website
+```
+
+### 4. Allow the website to upload to R2 (CORS)
+In the Cloudflare dashboard: **R2 → your bucket → Settings → CORS Policy → Add**, and paste
+the contents of [`worker/r2-cors.json`](worker/r2-cors.json). (It already lists your live site
+`https://aligut1989.github.io`. Add other origins if you host it elsewhere.)
+
+### 5. Point the site at your Worker
+Put your Worker URL into [`config.js`](config.js):
+```js
+MODE: "r2",
+WORKER_URL: "https://secure-file-transfer.<your-sub>.workers.dev",
+```
+Commit + push:
+```powershell
+cd ..
+git commit -am "Point site at my R2 Worker"
+git push
+```
+
+### Use it
+Open the site → type your `APP_PASSWORD` → drag your 1.7 GB file in. Download it on any other computer the same way.
+
+**Notes (R2 mode):**
+- Free tier: 10 GB storage, and **zero download fees**.
+- The `APP_PASSWORD` is the only thing you type; the R2 keys stay inside the Worker as secrets.
+- Uploads go directly browser → R2 (the presigned URL). If an upload gives a "CORS error", re-check step 4.
+- Single upload works up to ~5 GB. For bigger, ask for multipart upload.
+
+---
+
+## ⚡ GitHub mode (no extra service, files ≤ 100 MB)
+
+To use this instead, set `MODE: "github"` in `config.js`.
 
 1. **A private storage repo already exists:** `secure-file-transfer-storage`.
    (If you fork this, create your own private repo and put its name in `config.js`.)

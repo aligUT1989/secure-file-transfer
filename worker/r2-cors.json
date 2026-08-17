@@ -1,0 +1,12 @@
+[
+  {
+    "AllowedOrigins": [
+      "https://aligut1989.github.io",
+      "http://localhost:8080"
+    ],
+    "AllowedMethods": ["PUT", "GET"],
+    "AllowedHeaders": ["*"],
+    "ExposeHeaders": ["ETag"],
+    "MaxAgeSeconds": 3600
+  }
+]

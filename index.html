@@ -24,67 +24,51 @@
   input{font-family:inherit}
   a{color:var(--accent)}
 
-  /* ---------- Auth screen ---------- */
   #auth{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
-  .card{
-    width:100%;max-width:430px;background:var(--panel);border:1px solid var(--line);
-    border-radius:18px;padding:34px 30px;box-shadow:var(--shadow)
-  }
+  .card{width:100%;max-width:430px;background:var(--panel);border:1px solid var(--line);
+    border-radius:18px;padding:34px 30px;box-shadow:var(--shadow)}
   .logo{font-size:44px;text-align:center;line-height:1}
   .card h1{font-size:22px;margin:14px 0 4px;text-align:center}
   .card p.sub{margin:0 0 22px;text-align:center;color:var(--muted);font-size:13.5px}
   .field{margin-bottom:14px}
   .field label{display:block;font-size:12.5px;color:var(--muted);margin-bottom:6px}
-  .field input{
-    width:100%;padding:12px 13px;background:var(--panel2);border:1px solid var(--line);
-    border-radius:10px;color:var(--text);font-size:14.5px;outline:none;transition:border-color .15s
-  }
+  .field input{width:100%;padding:12px 13px;background:var(--panel2);border:1px solid var(--line);
+    border-radius:10px;color:var(--text);font-size:14.5px;outline:none;transition:border-color .15s}
   .field input:focus{border-color:var(--accent)}
   .rowcheck{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin:-4px 0 16px}
   .rowcheck input{width:16px;height:16px;accent-color:var(--accent)}
-  .btn{
-    width:100%;padding:12px;background:var(--accent);color:#062611;font-weight:700;
-    font-size:15px;transition:background .15s,transform .05s
-  }
-  .btn:hover{background:var(--accent2)}
-  .btn:active{transform:translateY(1px)}
+  .btn{width:100%;padding:12px;background:var(--accent);color:#062611;font-weight:700;font-size:15px;
+    transition:background .15s,transform .05s}
+  .btn:hover{background:var(--accent2)} .btn:active{transform:translateY(1px)}
   .btn[disabled]{opacity:.55;cursor:default}
   .msg{margin-top:14px;font-size:13px;text-align:center;min-height:18px}
   .msg.err{color:var(--danger)} .msg.ok{color:var(--accent)}
-  .lock{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);
-    font-size:12px;margin-top:20px}
+  .lock{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);font-size:12px;margin-top:20px;text-align:center}
   details.help{margin-top:18px;font-size:13px;color:var(--muted)}
   details.help summary{cursor:pointer;color:var(--accent);font-weight:600}
   details.help ol{margin:10px 0 0;padding-left:20px;line-height:1.6}
   details.help code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:12px}
 
-  /* ---------- App screen ---------- */
-  header{
-    display:flex;align-items:center;gap:12px;padding:14px 22px;
-    border-bottom:1px solid var(--line);background:rgba(22,27,34,.7);backdrop-filter:blur(8px);
-    position:sticky;top:0;z-index:5
-  }
+  header{display:flex;align-items:center;gap:12px;padding:14px 22px;border-bottom:1px solid var(--line);
+    background:rgba(22,27,34,.7);backdrop-filter:blur(8px);position:sticky;top:0;z-index:5}
   header .brand{font-weight:700;font-size:16px;display:flex;align-items:center;gap:9px}
   header .who{margin-left:auto;color:var(--muted);font-size:13px}
   .ghost{background:transparent;border:1px solid var(--line);color:var(--text);padding:8px 14px;font-size:13px}
   .ghost:hover{border-color:var(--accent);color:var(--accent)}
 
   main{max-width:900px;margin:0 auto;padding:26px 22px 60px}
-
-  .drop{
-    border:2px dashed var(--line);border-radius:16px;padding:38px 20px;text-align:center;
-    background:var(--panel);transition:border-color .15s,background .15s;cursor:pointer
-  }
+  .drop{border:2px dashed var(--line);border-radius:16px;padding:38px 20px;text-align:center;
+    background:var(--panel);transition:border-color .15s,background .15s;cursor:pointer}
   .drop.drag{border-color:var(--accent);background:#12261b}
-  .drop .big{font-size:40px}
-  .drop h2{margin:12px 0 4px;font-size:17px}
+  .drop .big{font-size:40px} .drop h2{margin:12px 0 4px;font-size:17px}
   .drop p{margin:0;color:var(--muted);font-size:13px}
 
   .uploads{margin-top:14px;display:flex;flex-direction:column;gap:8px}
   .uprow{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px}
   .uprow .top{display:flex;justify-content:space-between;gap:10px}
-  .bar{height:5px;background:#0c1017;border-radius:4px;margin-top:8px;overflow:hidden}
-  .bar > span{display:block;height:100%;width:0;background:var(--accent);transition:width .15s}
+  .uprow .st{color:var(--muted);white-space:nowrap}
+  .bar{height:6px;background:#0c1017;border-radius:4px;margin-top:8px;overflow:hidden}
+  .bar > span{display:block;height:100%;width:0;background:var(--accent);transition:width .12s}
 
   .listhead{display:flex;align-items:center;margin:30px 0 12px}
   .listhead h3{margin:0;font-size:15px}
@@ -92,32 +76,27 @@
   .listhead .refresh{margin-left:auto}
 
   .files{display:flex;flex-direction:column;gap:8px}
-  .file{
-    display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);
-    border-radius:12px;padding:12px 14px
-  }
+  .file{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:12px 14px}
   .file .ic{font-size:24px;width:30px;text-align:center;flex:none}
   .file .meta{min-width:0;flex:1}
   .file .name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .file .sub{font-size:12px;color:var(--muted);margin-top:2px}
   .file .acts{display:flex;gap:8px;flex:none}
-  .iconbtn{background:var(--panel2);border:1px solid var(--line);color:var(--text);
-    width:38px;height:38px;font-size:16px;display:grid;place-items:center}
+  .iconbtn{background:var(--panel2);border:1px solid var(--line);color:var(--text);width:38px;height:38px;
+    font-size:16px;display:grid;place-items:center}
   .iconbtn:hover{border-color:var(--accent);color:var(--accent)}
   .iconbtn.del:hover{border-color:var(--danger);color:var(--danger)}
   .iconbtn[disabled]{opacity:.5;cursor:default}
 
   .empty{text-align:center;color:var(--muted);padding:44px 10px;font-size:14px}
-  .toast{
-    position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
-    background:var(--panel2);border:1px solid var(--line);color:var(--text);
-    padding:12px 18px;border-radius:12px;font-size:13.5px;box-shadow:var(--shadow);
-    opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:20;max-width:90vw
-  }
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+    background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:12px 18px;border-radius:12px;
+    font-size:13.5px;box-shadow:var(--shadow);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:20;max-width:90vw}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
   .toast.err{border-color:var(--danger)}
-  .banner{background:#3a1d1d;border:1px solid var(--danger);color:#ffd9d6;padding:12px 16px;
-    border-radius:12px;font-size:13.5px;margin-bottom:18px}
+  .banner{background:#3a1d1d;border:1px solid var(--danger);color:#ffd9d6;padding:12px 16px;border-radius:12px;
+    font-size:13.5px;margin-bottom:18px}
 </style>
 </head>
 <body>
@@ -127,14 +106,14 @@
   <div class="card">
     <div class="logo">📦</div>
     <h1>My Files</h1>
-    <p class="sub" id="authSub">Sign in with a GitHub access token to reach your files anywhere.</p>
+    <p class="sub" id="authSub">Sign in to reach your files from anywhere.</p>
 
     <div id="setupBanner" class="banner hidden"></div>
 
     <form id="authForm" autocomplete="off">
       <div class="field">
-        <label for="token">GitHub access token</label>
-        <input id="token" type="password" placeholder="github_pat_… or ghp_…" required autocomplete="off" spellcheck="false" />
+        <label for="secret" id="secretLabel">Password</label>
+        <input id="secret" type="password" required autocomplete="off" spellcheck="false" />
       </div>
       <div class="rowcheck">
         <input id="remember" type="checkbox" checked />
@@ -145,18 +124,17 @@
 
     <div class="msg" id="authMsg"></div>
 
-    <details class="help" id="tokenHelp">
+    <details class="help hidden" id="tokenHelp">
       <summary>How do I get a token? (1 min)</summary>
       <ol>
         <li>Open <a id="patLink" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → Fine-grained tokens</a>.</li>
-        <li>Token name: anything. Expiration: your choice.</li>
         <li><b>Repository access</b> → <i>Only select repositories</i> → pick <code id="repoName">your storage repo</code>.</li>
-        <li><b>Permissions → Repository permissions → Contents</b> → <i>Read and write</i>.</li>
-        <li>Click <b>Generate token</b>, copy it, paste it above.</li>
+        <li><b>Permissions → Contents</b> → <i>Read and write</i>.</li>
+        <li><b>Generate token</b>, copy it, paste it above.</li>
       </ol>
     </details>
 
-    <div class="lock">🔒 HTTPS · stored in your private GitHub repo · token stays on this device</div>
+    <div class="lock" id="lockLine">🔒 HTTPS · files stay private to you</div>
   </div>
 </section>
 
@@ -167,17 +145,14 @@
     <div class="who" id="who"></div>
     <button class="ghost" id="signout">Sign out</button>
   </header>
-
   <main>
     <div class="drop" id="drop">
       <div class="big">⬆️</div>
       <h2>Drop files here or click to upload</h2>
-      <p>Saved privately to your GitHub repo — grab them from any computer.</p>
+      <p id="dropSub">Saved privately — grab them from any computer.</p>
       <input id="fileInput" type="file" multiple class="hidden" />
     </div>
-
     <div class="uploads" id="uploads"></div>
-
     <div class="listhead">
       <h3>Your files</h3>
       <span class="count" id="count"></span>
@@ -195,191 +170,240 @@
 (function(){
   "use strict";
   const CFG = window.APP_CONFIG || {};
+  const MODE = CFG.MODE || "github";
   const $ = (id)=>document.getElementById(id);
   const authSection=$("auth"), appSection=$("app");
 
-  const OWNER = CFG.GITHUB_OWNER;
-  const REPO  = CFG.GITHUB_REPO;
-  const BRANCH= CFG.GITHUB_BRANCH || "main";
-  const DIR   = (CFG.UPLOAD_DIR || "uploads").replace(/^\/+|\/+$/g,"");
-  const LS_KEY = "sft.ghtoken";
-  const MAX_BYTES = 100*1024*1024; // GitHub Contents API hard cap
-
-  const configured = OWNER && REPO && !String(OWNER).includes("YOUR") ;
-  if(!configured){
-    const b=$("setupBanner"); b.classList.remove("hidden");
-    b.textContent="⚙️ Set GITHUB_OWNER and GITHUB_REPO in config.js first.";
-  }
-  // fill in help text
-  $("repoName").textContent = REPO || "your storage repo";
-  if(OWNER && REPO){
-    $("patLink").href = "https://github.com/settings/personal-access-tokens/new";
-  }
-
-  let token = null;
-
-  // ---------- toast ----------
+  // ---------- helpers ----------
   let toastTimer;
   function toast(text, isErr){
     const t=$("toast"); t.textContent=text;
     t.className="toast show"+(isErr?" err":"");
-    clearTimeout(toastTimer);
-    toastTimer=setTimeout(()=>t.className="toast"+(isErr?" err":""),3600);
+    clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.className="toast"+(isErr?" err":""),3600);
   }
-  function authMsg(text, ok){
-    const m=$("authMsg"); m.textContent=text; m.className="msg "+(ok?"ok":"err");
-  }
-  function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-
-  // ---------- GitHub API ----------
-  function api(path, opts={}, rawAccept){
-    return fetch("https://api.github.com"+path, {
-      ...opts,
-      headers:{
-        "Authorization":"Bearer "+token,
-        "Accept": rawAccept || "application/vnd.github+json",
-        "X-GitHub-Api-Version":"2022-11-28",
-        ...(opts.headers||{})
-      }
-    });
-  }
-  function repoPath(name){
-    // encode each segment but keep slashes
-    const full = DIR ? DIR+"/"+name : name;
-    return full.split("/").map(encodeURIComponent).join("/");
-  }
-
-  async function fileToBase64(file){
-    const buf = await file.arrayBuffer();
-    const bytes = new Uint8Array(buf);
-    let binary=""; const chunk=0x8000;
-    for(let i=0;i<bytes.length;i+=chunk){
-      binary += String.fromCharCode.apply(null, bytes.subarray(i,i+chunk));
-    }
-    return btoa(binary);
-  }
-
-  // ---------- auth ----------
-  $("authForm").addEventListener("submit", async (e)=>{
-    e.preventDefault();
-    if(!configured){ authMsg("Set your repo in config.js first."); return; }
-    const t = $("token").value.trim();
-    if(!t){ return; }
-    const btn=$("authBtn"); btn.disabled=true; authMsg("Checking…", true);
-    token=t;
-    try{
-      // verify token works AND can see the repo
-      const r = await api("/repos/"+OWNER+"/"+REPO);
-      if(r.status===401) throw new Error("Token rejected. Check you copied it fully.");
-      if(r.status===404) throw new Error("Token can't see "+OWNER+"/"+REPO+". Give it access to that repo (Contents: Read and write).");
-      if(!r.ok) throw new Error("GitHub error "+r.status);
-      const repo = await r.json();
-      if(!repo.permissions || !repo.permissions.push){
-        throw new Error("Token is read-only. Set Contents permission to 'Read and write'.");
-      }
-      if($("remember").checked){ try{ localStorage.setItem(LS_KEY, t); }catch(_){} }
-      enterApp();
-    }catch(err){
-      token=null;
-      authMsg(err.message || "Could not connect.");
-      btn.disabled=false;
-    }
-  });
-
-  function enterApp(){
-    authSection.classList.add("hidden");
-    appSection.classList.remove("hidden");
-    $("who").textContent = OWNER+"/"+REPO;
-    loadFiles();
-  }
-  $("signout").onclick = ()=>{
-    token=null;
-    try{ localStorage.removeItem(LS_KEY); }catch(_){}
-    $("token").value="";
-    appSection.classList.add("hidden");
-    authSection.classList.remove("hidden");
-    $("authBtn").disabled=false;
-    authMsg("");
-  };
-
-  // ---------- files ----------
-  function fmtSize(b){
-    if(b==null) return "";
-    const u=["B","KB","MB","GB"]; let i=0, n=b;
-    while(n>=1024 && i<u.length-1){n/=1024;i++;}
-    return n.toFixed(n<10&&i>0?1:0)+" "+u[i];
-  }
-  function iconFor(name){
-    const e=(name.split(".").pop()||"").toLowerCase();
+  function authMsg(text, ok){ const m=$("authMsg"); m.textContent=text; m.className="msg "+(ok?"ok":"err"); }
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+  function fmtSize(b){ if(b==null)return""; const u=["B","KB","MB","GB","TB"];let i=0,n=b;
+    while(n>=1024&&i<u.length-1){n/=1024;i++;} return n.toFixed(n<10&&i>0?1:0)+" "+u[i]; }
+  function iconFor(name){ const e=(name.split(".").pop()||"").toLowerCase();
     if(["png","jpg","jpeg","gif","webp","bmp","svg","heic"].includes(e))return"🖼️";
     if(["mp4","mov","avi","mkv","webm"].includes(e))return"🎬";
     if(["mp3","wav","flac","m4a","ogg"].includes(e))return"🎵";
     if(["pdf"].includes(e))return"📕";
     if(["doc","docx","txt","rtf","odt","md"].includes(e))return"📄";
     if(["xls","xlsx","csv"].includes(e))return"📊";
-    if(["zip","rar","7z","tar","gz"].includes(e))return"🗜️";
+    if(["zip","rar","7z","tar","gz","iso"].includes(e))return"🗜️";
     if(["exe","msi","apk","dmg"].includes(e))return"⚙️";
-    return "📎";
+    return "📎"; }
+
+  // ============================================================
+  //  BACKENDS — each implements: connect, list, upload, download, remove
+  // ============================================================
+
+  // ---------- Cloudflare R2 backend ----------
+  function makeR2Backend(){
+    const WORKER = (CFG.WORKER_URL||"").replace(/\/+$/,"");
+    let pw = null;
+    async function call(path, body, signal){
+      const r = await fetch(WORKER+path, {
+        method:"POST",
+        headers:{ "Content-Type":"application/json", "x-app-key": pw },
+        body: JSON.stringify(body||{}), signal
+      });
+      if(r.status===401) throw new Error("Wrong password.");
+      if(!r.ok){ let m="Server error "+r.status; try{const j=await r.json(); if(j.error)m=j.error;}catch(_){} throw new Error(m); }
+      return r.json();
+    }
+    return {
+      mode:"r2",
+      loginLabel:"Password",
+      loginPlaceholder:"your file-transfer password",
+      configured: WORKER && !WORKER.includes("YOUR-WORKER"),
+      setupMsg:"⚙️ Set WORKER_URL in config.js to your deployed Worker URL.",
+      lock:"🔒 HTTPS · stored in Cloudflare R2 · uploads go straight to storage",
+      hasProgress:true,
+      async connect(secret){ pw=secret; await call("/list"); return "Cloudflare R2"; },
+      async list(){ const j=await call("/list"); return (j.files||[]).map(f=>({name:f.name,size:f.size})); },
+      async upload(file, onProgress){
+        const { url } = await call("/presign-put", { name:file.name });
+        await new Promise((res,rej)=>{
+          const xhr=new XMLHttpRequest();
+          xhr.open("PUT", url);
+          xhr.upload.onprogress=(e)=>{ if(e.lengthComputable&&onProgress) onProgress(e.loaded/e.total); };
+          xhr.onload=()=> (xhr.status>=200&&xhr.status<300)?res():rej(new Error("Upload failed ("+xhr.status+")"));
+          xhr.onerror=()=>rej(new Error("Network/CORS error — check the R2 bucket CORS policy"));
+          xhr.send(file);
+        });
+      },
+      async download(item){
+        const { url } = await call("/presign-get", { name:item.name });
+        const a=document.createElement("a"); a.href=url; a.download=item.name;
+        document.body.appendChild(a); a.click(); a.remove();
+      },
+      async remove(item){ await call("/delete", { name:item.name }); }
+    };
   }
 
+  // ---------- GitHub backend ----------
+  function makeGitHubBackend(){
+    const OWNER=CFG.GITHUB_OWNER, REPO=CFG.GITHUB_REPO, BRANCH=CFG.GITHUB_BRANCH||"main";
+    const DIR=(CFG.UPLOAD_DIR||"uploads").replace(/^\/+|\/+$/g,"");
+    const MAX=100*1024*1024;
+    let token=null;
+    function api(path, opts={}, rawAccept){
+      return fetch("https://api.github.com"+path,{ ...opts, headers:{
+        "Authorization":"Bearer "+token,"Accept":rawAccept||"application/vnd.github+json",
+        "X-GitHub-Api-Version":"2022-11-28", ...(opts.headers||{}) }});
+    }
+    const enc=(name)=>{ const full=DIR?DIR+"/"+name:name; return full.split("/").map(encodeURIComponent).join("/"); };
+    async function b64(file){ const buf=await file.arrayBuffer(); const bytes=new Uint8Array(buf);
+      let s="";const c=0x8000; for(let i=0;i<bytes.length;i+=c) s+=String.fromCharCode.apply(null,bytes.subarray(i,i+c)); return btoa(s); }
+    async function shaOf(name){ const r=await api("/repos/"+OWNER+"/"+REPO+"/contents/"+enc(name)+"?ref="+encodeURIComponent(BRANCH));
+      if(r.ok){const j=await r.json();return j.sha;} return null; }
+    return {
+      mode:"github",
+      loginLabel:"GitHub access token",
+      loginPlaceholder:"github_pat_… or ghp_…",
+      configured: OWNER && REPO && !String(OWNER).includes("YOUR"),
+      setupMsg:"⚙️ Set GITHUB_OWNER and GITHUB_REPO in config.js first.",
+      showTokenHelp:true, owner:OWNER, repo:REPO,
+      lock:"🔒 HTTPS · stored in your private GitHub repo · 100 MB/file",
+      hasProgress:false,
+      async connect(secret){
+        token=secret;
+        const r=await api("/repos/"+OWNER+"/"+REPO);
+        if(r.status===401) throw new Error("Token rejected. Check you copied it fully.");
+        if(r.status===404) throw new Error("Token can't see "+OWNER+"/"+REPO+". Give it Contents access.");
+        if(!r.ok) throw new Error("GitHub error "+r.status);
+        const repo=await r.json();
+        if(!repo.permissions||!repo.permissions.push) throw new Error("Token is read-only. Set Contents to Read and write.");
+        return OWNER+"/"+REPO;
+      },
+      async list(){
+        const r=await api("/repos/"+OWNER+"/"+REPO+"/contents/"+(DIR?DIR.split("/").map(encodeURIComponent).join("/"):"")+"?ref="+encodeURIComponent(BRANCH));
+        if(r.status===404) return [];
+        if(!r.ok) throw new Error("Load failed ("+r.status+")");
+        let data=await r.json(); if(!Array.isArray(data)) data=[];
+        return data.filter(x=>x.type==="file"&&x.name!==".gitkeep").map(f=>({name:f.name,size:f.size,sha:f.sha}));
+      },
+      async upload(file,onProgress){
+        if(file.size>MAX) throw new Error("over GitHub's 100 MB limit");
+        if(onProgress) onProgress(0.2);
+        const content=await b64(file);
+        if(onProgress) onProgress(0.6);
+        const sha=await shaOf(file.name);
+        const body={message:"Add "+file.name,content:content,branch:BRANCH}; if(sha) body.sha=sha;
+        const r=await api("/repos/"+OWNER+"/"+REPO+"/contents/"+enc(file.name),{method:"PUT",body:JSON.stringify(body)});
+        if(!r.ok){ let m="error "+r.status; try{const j=await r.json(); if(j.message)m=j.message;}catch(_){} throw new Error(m); }
+        if(onProgress) onProgress(1);
+      },
+      async download(item){
+        const r=await api("/repos/"+OWNER+"/"+REPO+"/contents/"+enc(item.name)+"?ref="+encodeURIComponent(BRANCH),{},"application/vnd.github.raw");
+        if(!r.ok) throw new Error("Download failed ("+r.status+")");
+        const blob=await r.blob(); const url=URL.createObjectURL(blob);
+        const a=document.createElement("a"); a.href=url; a.download=item.name; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url),4000);
+      },
+      async remove(item){
+        const r=await api("/repos/"+OWNER+"/"+REPO+"/contents/"+enc(item.name),{method:"DELETE",
+          body:JSON.stringify({message:"Delete "+item.name,sha:item.sha,branch:BRANCH})});
+        if(!r.ok) throw new Error("Delete failed ("+r.status+")");
+      }
+    };
+  }
+
+  // ---------- Supabase backend ----------
+  function makeSupabaseBackend(){
+    let sb=null, user=null;
+    const BUCKET=CFG.BUCKET||"files";
+    const ok = CFG.SUPABASE_URL && !CFG.SUPABASE_URL.includes("YOUR-PROJECT") && CFG.SUPABASE_ANON_KEY && !CFG.SUPABASE_ANON_KEY.includes("YOUR-ANON");
+    return {
+      mode:"supabase", loginLabel:"Email", loginPlaceholder:"you@email.com", second:"password",
+      configured: ok, setupMsg:"⚙️ Add your Supabase URL + anon key to config.js.",
+      lock:"🔒 HTTPS · Supabase Storage", hasProgress:false, needsEmail:true,
+      async connect(email, password){
+        if(!sb) sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY);
+        const {data,error}=await sb.auth.signInWithPassword({email,password});
+        if(error) throw error; user=data.user; return user.email;
+      },
+      async list(){ const {data,error}=await sb.storage.from(BUCKET).list(user.id,{limit:1000,sortBy:{column:"created_at",order:"desc"}});
+        if(error) throw error; return (data||[]).filter(f=>f.name&&f.name!==".emptyFolderPlaceholder").map(f=>({name:f.name,size:f.metadata&&f.metadata.size})); },
+      async upload(file){ const {error}=await sb.storage.from(BUCKET).upload(user.id+"/"+file.name,file,{upsert:true}); if(error) throw error; },
+      async download(item){ const {data,error}=await sb.storage.from(BUCKET).createSignedUrl(user.id+"/"+item.name,60,{download:item.name});
+        if(error) throw error; const a=document.createElement("a"); a.href=data.signedUrl; a.download=item.name; document.body.appendChild(a); a.click(); a.remove(); },
+      async remove(item){ const {error}=await sb.storage.from(BUCKET).remove([user.id+"/"+item.name]); if(error) throw error; }
+    };
+  }
+
+  const backend = MODE==="r2" ? makeR2Backend() : MODE==="supabase" ? makeSupabaseBackend() : makeGitHubBackend();
+  const LS_KEY = "sft."+backend.mode+".secret";
+
+  // ---------- wire up login UI ----------
+  $("secretLabel").textContent = backend.loginLabel;
+  $("secret").placeholder = backend.loginPlaceholder || "";
+  $("secret").type = backend.needsEmail ? "email" : "password";
+  $("lockLine").textContent = backend.lock;
+  if(backend.showTokenHelp){
+    $("tokenHelp").classList.remove("hidden");
+    if(backend.repo) $("repoName").textContent = backend.repo;
+  }
+  if(!backend.configured){ const b=$("setupBanner"); b.classList.remove("hidden"); b.textContent=backend.setupMsg; }
+
+  // second field for supabase (password)
+  let pwField=null;
+  if(backend.needsEmail){
+    const wrap=document.createElement("div"); wrap.className="field";
+    wrap.innerHTML='<label for="secret2">Password</label><input id="secret2" type="password" required autocomplete="off" />';
+    $("secret").closest(".field").after(wrap);
+    pwField=$("secret2");
+    // load supabase-js
+    const s=document.createElement("script"); s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"; document.head.appendChild(s);
+  }
+
+  $("authForm").addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    if(!backend.configured){ authMsg("Not configured yet — see config.js."); return; }
+    const secret=$("secret").value.trim();
+    const btn=$("authBtn"); btn.disabled=true; authMsg("Checking…", true);
+    try{
+      const who = backend.needsEmail ? await backend.connect(secret, pwField.value) : await backend.connect(secret);
+      if($("remember").checked && !backend.needsEmail){ try{ localStorage.setItem(LS_KEY, secret); }catch(_){} }
+      enterApp(who);
+    }catch(err){ authMsg(err.message||"Could not connect."); btn.disabled=false; }
+  });
+
+  function enterApp(who){
+    authSection.classList.add("hidden"); appSection.classList.remove("hidden");
+    $("who").textContent = who||""; loadFiles();
+  }
+  $("signout").onclick=()=>{ try{localStorage.removeItem(LS_KEY);}catch(_){}
+    $("secret").value=""; if(pwField)pwField.value=""; appSection.classList.add("hidden");
+    authSection.classList.remove("hidden"); $("authBtn").disabled=false; authMsg(""); };
+
+  // ---------- files ----------
   async function loadFiles(){
-    if(!token) return;
     const wrap=$("files"); wrap.innerHTML='<div class="empty">Loading…</div>';
-    const r = await api("/repos/"+OWNER+"/"+REPO+"/contents/"+(DIR?DIR.split("/").map(encodeURIComponent).join("/"):"")+"?ref="+encodeURIComponent(BRANCH));
-    if(r.status===404){ render([]); return; }          // folder not created yet
-    if(!r.ok){ wrap.innerHTML=""; toast("Load failed ("+r.status+")",true); return; }
-    let data = await r.json();
-    if(!Array.isArray(data)) data=[];
-    data = data.filter(x=>x.type==="file" && x.name!==".gitkeep");
-    data.sort((a,b)=>a.name.localeCompare(b.name));
-    render(data);
+    try{ render(await backend.list()); }
+    catch(err){ wrap.innerHTML=""; toast(err.message,true); }
   }
-
   function render(items){
+    items.sort((a,b)=>a.name.localeCompare(b.name));
     const wrap=$("files"); wrap.innerHTML="";
-    $("count").textContent = items.length ? "("+items.length+")" : "";
+    $("count").textContent=items.length?"("+items.length+")":"";
     $("empty").classList.toggle("hidden", items.length>0);
     for(const f of items){
       const row=document.createElement("div"); row.className="file";
-      row.innerHTML=
-        '<div class="ic">'+iconFor(f.name)+'</div>'+
+      row.innerHTML='<div class="ic">'+iconFor(f.name)+'</div>'+
         '<div class="meta"><div class="name" title="'+escapeHtml(f.name)+'">'+escapeHtml(f.name)+'</div>'+
         '<div class="sub">'+fmtSize(f.size)+'</div></div>'+
-        '<div class="acts">'+
-          '<button class="iconbtn dl" title="Download">⬇️</button>'+
-          '<button class="iconbtn del" title="Delete">🗑️</button>'+
-        '</div>';
+        '<div class="acts"><button class="iconbtn dl" title="Download">⬇️</button>'+
+        '<button class="iconbtn del" title="Delete">🗑️</button></div>';
       const dl=row.querySelector(".dl"), del=row.querySelector(".del");
-      dl.onclick=()=>download(f.name, dl);
-      del.onclick=()=>remove(f.name, f.sha);
+      dl.onclick=async()=>{ dl.disabled=true; try{ await backend.download(f); }catch(e){ toast(e.message,true); } dl.disabled=false; };
+      del.onclick=async()=>{ if(!confirm('Delete "'+f.name+'"? This can\'t be undone.'))return;
+        try{ await backend.remove(f); toast("Deleted"); loadFiles(); }catch(e){ toast(e.message,true); } };
       wrap.appendChild(row);
     }
-  }
-
-  async function download(name, btn){
-    btn.disabled=true;
-    try{
-      const r = await api("/repos/"+OWNER+"/"+REPO+"/contents/"+repoPath(name)+"?ref="+encodeURIComponent(BRANCH),
-                          {}, "application/vnd.github.raw");
-      if(!r.ok) throw new Error("Download failed ("+r.status+")");
-      const blob = await r.blob();
-      const url = URL.createObjectURL(blob);
-      const a=document.createElement("a"); a.href=url; a.download=name;
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(()=>URL.revokeObjectURL(url), 4000);
-    }catch(err){ toast(err.message,true); }
-    finally{ btn.disabled=false; }
-  }
-
-  async function remove(name, sha){
-    if(!confirm('Delete "'+name+'"? This can\'t be undone.')) return;
-    const r = await api("/repos/"+OWNER+"/"+REPO+"/contents/"+repoPath(name), {
-      method:"DELETE",
-      body: JSON.stringify({ message:"Delete "+name, sha:sha, branch:BRANCH })
-    });
-    if(!r.ok){ toast("Delete failed ("+r.status+")",true); return; }
-    toast("Deleted");
-    loadFiles();
   }
 
   // ---------- upload ----------
@@ -391,61 +415,32 @@
   drop.addEventListener("drop",e=>{ if(e.dataTransfer.files.length) handleFiles(e.dataTransfer.files); });
 
   async function handleFiles(list){
-    if(!token){ toast("Please connect first",true); return; }
     for(const file of list){ await uploadOne(file); }
     loadFiles();
   }
-
   function uploadRow(name){
     const row=document.createElement("div"); row.className="uprow";
-    row.innerHTML='<div class="top"><span>'+escapeHtml(name)+'</span><span class="st">uploading…</span></div>'+
-      '<div class="bar"><span></span></div>';
+    row.innerHTML='<div class="top"><span>'+escapeHtml(name)+'</span><span class="st">starting…</span></div><div class="bar"><span></span></div>';
     $("uploads").prepend(row);
     return {
-      set:(pct,label)=>{ row.querySelector(".bar > span").style.width=pct+"%"; if(label) row.querySelector(".st").textContent=label; },
-      done:(ok,msg)=>{
-        row.querySelector(".st").textContent = ok ? "✓ done" : ("⚠️ "+(msg||"failed"));
-        row.querySelector(".bar > span").style.width="100%";
-        if(ok) setTimeout(()=>row.remove(), 1800);
-      }
+      pct:(p)=>{ row.querySelector(".bar > span").style.width=Math.round(p*100)+"%";
+        row.querySelector(".st").textContent=Math.round(p*100)+"%"; },
+      done:(ok,msg)=>{ row.querySelector(".st").textContent=ok?"✓ done":("⚠️ "+(msg||"failed"));
+        row.querySelector(".bar > span").style.width="100%"; if(ok) setTimeout(()=>row.remove(),1800); }
     };
   }
-
-  async function existingSha(name){
-    const r = await api("/repos/"+OWNER+"/"+REPO+"/contents/"+repoPath(name)+"?ref="+encodeURIComponent(BRANCH));
-    if(r.ok){ const j=await r.json(); return j.sha; }
-    return null;
-  }
-
   async function uploadOne(file){
     const ui=uploadRow(file.name);
-    if(file.size > MAX_BYTES){ ui.done(false,"too big (>100MB)"); toast(file.name+" is over GitHub's 100MB limit",true); return; }
-    try{
-      ui.set(20,"encoding…");
-      const content = await fileToBase64(file);
-      ui.set(55,"uploading…");
-      const sha = await existingSha(file.name);
-      const body = { message:"Add "+file.name, content:content, branch:BRANCH };
-      if(sha) body.sha = sha;
-      const r = await api("/repos/"+OWNER+"/"+REPO+"/contents/"+repoPath(file.name), {
-        method:"PUT", body: JSON.stringify(body)
-      });
-      if(!r.ok){
-        let m="error "+r.status;
-        try{ const j=await r.json(); if(j.message) m=j.message; }catch(_){}
-        throw new Error(m);
-      }
-      ui.done(true);
-    }catch(err){ ui.done(false, err.message); toast(err.message,true); }
+    try{ await backend.upload(file, (p)=>ui.pct(p)); ui.done(true); }
+    catch(err){ ui.done(false, err.message); toast(file.name+": "+err.message, true); }
   }
-
   $("refresh").onclick=loadFiles;
 
   // ---------- auto sign-in ----------
-  (function restore(){
-    if(!configured) return;
+  (function(){
+    if(!backend.configured || backend.needsEmail) return;
     let saved=null; try{ saved=localStorage.getItem(LS_KEY); }catch(_){}
-    if(saved){ $("token").value=saved; $("authForm").requestSubmit(); }
+    if(saved){ $("secret").value=saved; $("authForm").requestSubmit(); }
   })();
 })();
 </script>
