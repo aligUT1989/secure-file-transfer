@@ -3,16 +3,44 @@
 A private, HTTPS-only website where **you log in and move files between your own computers**.
 Corporate firewalls block FTP, but this is just a normal `https://` website, so it sails right through.
 
-- 🔒 Email + password login
 - ⬆️ Drag-and-drop upload from any computer
 - ⬇️ Download your files anywhere
 - 🗑️ Delete files you no longer need
 - 🙈 Your files are **private to you** — no one else can see or reach them
 
-**Stack:** static HTML page + [Supabase](https://supabase.com) (free tier) for auth + encrypted storage.
-No server to run, no build step.
+The app supports **two backends** (pick one in `config.js` via `MODE`):
+
+| Mode | Login with | Files stored in | Best for |
+|------|-----------|-----------------|----------|
+| **`github`** (default) | a GitHub access token | a **private GitHub repo** | quickest — no extra service |
+| `supabase` | email + password | Supabase Storage | many files / large files / real accounts |
 
 ---
+
+## ⚡ Quick start — GitHub mode (no Supabase needed)
+
+This is how the app is set up right now.
+
+1. **A private storage repo already exists:** `secure-file-transfer-storage`.
+   (If you fork this, create your own private repo and put its name in `config.js`.)
+2. **Create a fine-grained access token** (your "password"):
+   - Open <https://github.com/settings/personal-access-tokens/new>
+   - **Repository access → Only select repositories →** choose `secure-file-transfer-storage`
+   - **Permissions → Repository permissions → Contents → Read and write**
+   - **Generate token**, copy it.
+3. **Open the site**, paste the token, click **Connect**. Done — upload/download from any computer.
+
+**Good to know (GitHub mode):**
+- The token acts as the password; it's stored only in your browser (uncheck "Stay signed in" to keep it in memory only).
+- Best for files under ~25 MB each (GitHub API hard cap is 100 MB per file).
+- Files live in your **private** repo, so they stay yours. Give the token an expiry for extra safety.
+- `api.github.com` is normally allowed through corporate networks (it's plain HTTPS).
+
+---
+
+## Alternative: Supabase mode (email + password, bigger files)
+
+Set `MODE: "supabase"` in `config.js`, then follow the steps below.
 
 ## 1. Create a free Supabase project (2 min)
 

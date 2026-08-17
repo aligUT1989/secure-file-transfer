@@ -1,18 +1,23 @@
 // ============================================================
-//  CONFIG — paste your Supabase project values here.
-//  These two values are SAFE to be public (that's how Supabase
-//  frontends work). Real security comes from the Storage
-//  policies you set up in supabase-setup.sql — a logged-in user
-//  can only ever touch their OWN folder.
+//  CONFIG
+//  This app can run in two modes. Right now it's set to "github"
+//  so it works WITHOUT Supabase — your files are stored in a
+//  private GitHub repo, and you "log in" with a GitHub token.
 // ============================================================
 
 window.APP_CONFIG = {
-  // Supabase -> Project Settings -> API -> "Project URL"
+  // "github"   -> store files in a private GitHub repo (no Supabase needed)
+  // "supabase" -> use Supabase auth + storage (see supabase-setup.sql)
+  MODE: "github",
+
+  // ---- GitHub mode settings ----
+  GITHUB_OWNER: "aligUT1989",                  // your GitHub username
+  GITHUB_REPO: "secure-file-transfer-storage", // the PRIVATE repo that holds files
+  GITHUB_BRANCH: "main",
+  UPLOAD_DIR: "uploads",                        // folder inside the repo
+
+  // ---- Supabase mode settings (only used if MODE = "supabase") ----
   SUPABASE_URL: "https://YOUR-PROJECT-ref.supabase.co",
-
-  // Supabase -> Project Settings -> API -> "anon public" key
   SUPABASE_ANON_KEY: "YOUR-ANON-PUBLIC-KEY",
-
-  // Name of the private Storage bucket (created in supabase-setup.sql)
   BUCKET: "files",
 };
