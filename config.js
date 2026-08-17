@@ -14,7 +14,7 @@ window.APP_CONFIG = {
   // ---- Cloudflare R2 mode ----
   // Paste the URL of your deployed Worker (looks like
   // https://secure-file-transfer.<your-subdomain>.workers.dev)
-  WORKER_URL: "https://YOUR-WORKER.workers.dev",
+  WORKER_URL: "https://secure-file-transfer.almiralida.workers.dev",
 
   // ---- GitHub mode settings ----
   GITHUB_OWNER: "aligUT1989",                  // your GitHub username
