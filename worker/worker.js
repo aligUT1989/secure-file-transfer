@@ -112,7 +112,8 @@ export default {
     if (request.method !== "POST") return json({ error: "Use POST" }, 405, origin);
 
     const key = request.headers.get("x-app-key") || "";
-    if (!env.APP_PASSWORD || !safeEqual(key, env.APP_PASSWORD)) return json({ error: "Unauthorized" }, 401, origin);
+    // Secrets set via a PowerShell pipe can carry a trailing \r\n; the client trims too.
+    if (!env.APP_PASSWORD || !safeEqual(key.trim(), env.APP_PASSWORD.trim())) return json({ error: "Unauthorized" }, 401, origin);
 
     const url = new URL(request.url);
     let body = {};

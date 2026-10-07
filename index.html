@@ -110,10 +110,12 @@
 
     <div id="setupBanner" class="banner hidden"></div>
 
-    <form id="authForm" autocomplete="off">
+    <form id="authForm">
+      <input type="text" name="username" value="my-files" autocomplete="username" class="hidden" tabindex="-1" aria-hidden="true" />
       <div class="field">
         <label for="secret" id="secretLabel">Password</label>
-        <input id="secret" type="password" required autocomplete="off" spellcheck="false" />
+        <input id="secret" name="password" type="password" required autocomplete="current-password" spellcheck="false" />
+        <label class="rowcheck" style="margin:8px 0 0;cursor:pointer"><input id="showPw" type="checkbox" /> Show password</label>
       </div>
       <div class="rowcheck">
         <input id="remember" type="checkbox" checked />
@@ -360,16 +362,30 @@
     const s=document.createElement("script"); s.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"; document.head.appendChild(s);
   }
 
+  $("showPw").onchange=(e)=>{ if(!backend.needsEmail) $("secret").type=e.target.checked?"text":"password"; };
+
+  let autoLogin=false;
   $("authForm").addEventListener("submit", async (e)=>{
     e.preventDefault();
     if(!backend.configured){ authMsg("Not configured yet — see config.js."); return; }
     const secret=$("secret").value.trim();
     const btn=$("authBtn"); btn.disabled=true; authMsg("Checking…", true);
+    const wasAuto=autoLogin; autoLogin=false;
     try{
       const who = backend.needsEmail ? await backend.connect(secret, pwField.value) : await backend.connect(secret);
       if($("remember").checked && !backend.needsEmail){ try{ localStorage.setItem(LS_KEY, secret); }catch(_){} }
       enterApp(who);
-    }catch(err){ authMsg(err.message||"Could not connect."); btn.disabled=false; }
+    }catch(err){
+      let msg=err.message||"Could not connect.";
+      if(err instanceof TypeError && /ISO-8859-1|headers/i.test(msg)) msg="Password has characters that can't be sent (e.g. smart quotes or emoji).";
+      // Drop a stale saved/autofilled password so it isn't silently re-sent.
+      if(!backend.needsEmail && /wrong password/i.test(msg)){
+        try{ localStorage.removeItem(LS_KEY); }catch(_){}
+        $("secret").value=""; $("secret").focus();
+        if(wasAuto) msg="Saved password no longer works — type it again.";
+      }
+      authMsg(msg); btn.disabled=false;
+    }
   });
 
   function enterApp(who){
@@ -440,7 +456,7 @@
   (function(){
     if(!backend.configured || backend.needsEmail) return;
     let saved=null; try{ saved=localStorage.getItem(LS_KEY); }catch(_){}
-    if(saved){ $("secret").value=saved; $("authForm").requestSubmit(); }
+    if(saved){ $("secret").value=saved; autoLogin=true; $("authForm").requestSubmit(); }
   })();
 })();
 </script>
