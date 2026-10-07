@@ -112,19 +112,21 @@ export default {
     if (request.method !== "POST") return json({ error: "Use POST" }, 405, origin);
 
     const key = request.headers.get("x-app-key") || "";
-    // Secrets set via a PowerShell pipe can carry a trailing \r\n; the client trims too.
-    if (!env.APP_PASSWORD || !safeEqual(key.trim(), env.APP_PASSWORD.trim())) return json({ error: "Unauthorized" }, 401, origin);
+    const pw = (env.APP_PASSWORD || "").trim();
+    // Dashboard/PowerShell pastes can carry a trailing \r\n; the client trims too.
+    if (!pw || !safeEqual(key.trim(), pw)) return json({ error: "Unauthorized" }, 401, origin);
 
     const url = new URL(request.url);
     let body = {};
     try { body = await request.json(); } catch (_) {}
 
+    const v = (s) => String(s || "").trim();
     const base = {
       method: "GET",
-      accountId: env.R2_ACCOUNT_ID,
-      accessKeyId: env.R2_ACCESS_KEY_ID,
-      secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-      bucket: env.R2_BUCKET,
+      accountId: v(env.R2_ACCOUNT_ID),
+      accessKeyId: v(env.R2_ACCESS_KEY_ID),
+      secretAccessKey: v(env.R2_SECRET_ACCESS_KEY),
+      bucket: v(env.R2_BUCKET),
     };
 
     try {
